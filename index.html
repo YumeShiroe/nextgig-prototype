@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NextGig</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="phone">
+
+    <!-- 1. Discover -->
+    <section id="discover" class="screen">
+      <header class="topbar"><h1>Discover</h1></header>
+      <div class="content">
+        <div class="filters">
+          <label>Genre
+            <select id="filter-genre">
+              <option value="all">All</option>
+            </select>
+          </label>
+          <label>Date
+            <select id="filter-date">
+              <option value="all">All</option>
+              <option value="today">Today</option>
+              <option value="week">This week</option>
+            </select>
+          </label>
+          <label>Price
+            <select id="filter-price">
+              <option value="all">All</option>
+              <option value="free">Free</option>
+              <option value="under10">Under €10</option>
+            </select>
+          </label>
+        </div>
+        <p class="note">Showing gigs in Lahti</p>
+        <ul id="gig-list" class="list"></ul>
+      </div>
+    </section>
+
+    <!-- 2. Gig details -->
+    <section id="gig" class="screen hidden">
+      <header class="topbar">
+        <a href="#" class="back">‹ Back</a>
+        <h1>Gig</h1>
+      </header>
+      <div class="content" id="gig-content"></div>
+    </section>
+
+    <!-- 3. Band profile -->
+    <section id="band" class="screen hidden">
+      <header class="topbar">
+        <a href="#" class="back">‹ Back</a>
+        <h1>Band</h1>
+      </header>
+      <div class="content" id="band-content"></div>
+    </section>
+
+    <!-- 4. Saved -->
+    <section id="saved" class="screen hidden">
+      <header class="topbar"><h1>Saved gigs</h1></header>
+      <div class="content">
+        <ul id="saved-list" class="list"></ul>
+        <p id="saved-empty" class="empty">No saved gigs yet. Save gigs from Discover.</p>
+      </div>
+    </section>
+
+    <!-- 5. Organiser -->
+    <section id="organiser" class="screen hidden">
+      <header class="topbar"><h1>Publish a gig</h1></header>
+      <div class="content">
+        <p class="org-note">Organiser view</p>
+        <form id="publish-form" class="form">
+          <label>Band name <input type="text" name="band" required></label>
+          <label>Venue <input type="text" name="venue" required></label>
+          <div class="row">
+            <label>Date <input type="date" name="date" required></label>
+            <label>Time <input type="time" name="time" required></label>
+          </div>
+          <label>Genre
+            <select name="genre" id="form-genre" required></select>
+          </label>
+          <label>Price (€, 0 = free) <input type="number" name="price" min="0" step="1" required></label>
+          <label>Ticket link <input type="url" name="link" placeholder="https://"></label>
+          <label>Description <textarea name="description" rows="3"></textarea></label>
+          <button type="submit" class="btn">Publish gig</button>
+          <p id="publish-msg" class="msg hidden">Gig published. It now shows in Discover.</p>
+        </form>
+
+        <h2 class="section-title">Your upcoming gigs</h2>
+        <ul id="org-list" class="list"></ul>
+      </div>
+    </section>
+
+    <nav class="tabbar">
+      <button data-tab="discover" class="active">Discover</button>
+      <button data-tab="saved">Saved</button>
+      <button data-tab="organiser">Organiser</button>
+    </nav>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
